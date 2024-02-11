@@ -52,6 +52,9 @@ public class PoolManager : MonoBehaviour
 
     void Update()
     {
+#if ENABLE_INPUT_SYSTEM
+
+#else
         if (Input.GetKeyDown(KeyCode.D))
         {
             Spawn();
@@ -65,5 +68,6 @@ public class PoolManager : MonoBehaviour
                 Despawn(m);
             }
         }
+#endif
     }
 }

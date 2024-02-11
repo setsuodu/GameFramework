@@ -11,8 +11,7 @@
 	- 内存泄漏，性能下降，卡顿;
 	- 减少频繁创建销毁的成本，实现循环复用;
 	- 2021.3，官方UnityEngine.Pool;
-3. InputSystem
-4. NetworkSystem
+3. NetworkSystem
 
 ## xLua/HybridCLR
 
@@ -20,8 +19,6 @@
 2. GameLogic
 
 # 服务器框架
-
-> https://blog.csdn.net/qq_33531923/article/details/126944150
 
 1. GateServer 网关服
 2. LoginServer 登录服

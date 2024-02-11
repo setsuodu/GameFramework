@@ -319,8 +319,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1688573040}
   - component: {fileID: 1688573041}
+  - component: {fileID: 1688573042}
   m_Layer: 0
-  m_Name: Logic
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,6 +355,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5632114910898958748, guid: d5b396023ca77b04987def8470bf1b2b, type: 3}
+--- !u!114 &1688573042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688573039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984cae2c25c74df41a500d3ffa801607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetName: Assets/Bundles/Prefabs/Bullet.prefab
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
