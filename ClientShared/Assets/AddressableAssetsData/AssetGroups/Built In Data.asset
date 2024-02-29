@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Built In Data
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: Built In Data
   m_Data:
     m_SerializedData: []
-  m_GUID: 4d8ad3a209570ff429da3dc138e8cc61
+  m_GUID: 40142ad8ceb357742a3ddfda1870ed2c
   m_SerializeEntries:
   - m_GUID: Resources
     m_Address: Resources

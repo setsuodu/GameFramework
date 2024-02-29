@@ -9,19 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Default Local Group
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Addressables.Editor:UnityEditor.AddressableAssets.Settings:AddressableAssetGroup
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 9bfac9bd31d7e5b4081793f3ee55dab2
-  m_SerializeEntries:
-  - m_GUID: d5b396023ca77b04987def8470bf1b2b
-    m_Address: Assets/Bundles/Prefabs/Bullet.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: 9d299d94a912efa4d9aeaf4a22c17206
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 25addf784957aed4cbbb37a974cfa46f, type: 2}
   m_SchemaSet:

@@ -9,7 +9,7 @@ public class AAManager : MonoBehaviour
 
     void Start()
     {
-        InstantiateBetaObj();
+        //InstantiateBetaObj();
     }
 
     private async void InstantiateBetaObj()
