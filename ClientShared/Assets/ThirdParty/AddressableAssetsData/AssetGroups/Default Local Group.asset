@@ -16,7 +16,17 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 9d299d94a912efa4d9aeaf4a22c17206
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: d5b396023ca77b04987def8470bf1b2b
+    m_Address: Assets/Bundles/Prefabs/Bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12ad8d11819914d46a9d3587f4d39c68
+    m_Address: Assets/Bundles/UI/UI_Login.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 25addf784957aed4cbbb37a974cfa46f, type: 2}
   m_SchemaSet:

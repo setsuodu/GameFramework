@@ -1,19 +1,67 @@
-﻿using HotFix;
+﻿using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Get;
+
+    private static bool Initialized = false;
     public static Present present; //通过请求返回
 
-    [SerializeField]
     private Transform canvasRoot;
-    [SerializeField]
     private UI_CheckUpdate ui_check;
 
     void Awake()
     {
+        if (!Initialized)
+        {
+            Get = this;
+            DontDestroyOnLoad(gameObject);
+
+            SystemSetting();
+            BindAssets();
+            //GetConfig();
+        }
+        else
+        {
+            OnInited();
+        }
+
+    }
+
+    void OnApplicationQuit()
+    {
+        Initialized = false;
+    }
+
+    // 系统设置
+    void SystemSetting()
+    {
+        Time.timeScale = 1.0f;
+        //Time.fixedDeltaTime = 1f / Constants.FPS;
+        //Application.targetFrameRate = Constants.FPS; //锁定渲染帧60，不锁是-1
+        QualitySettings.vSyncCount = 0; //只能是0/1/2，0是不等待垂直同步
+        Screen.fullScreen = false;
+        //Screen.SetResolution(540, 960, false);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        //Debug.unityLogger.logEnabled = false; //release版关闭
+    }
+
+    // 绑定组件
+    void BindAssets()
+    {
+        // 初始化目录
+        //if (!Directory.Exists(ConstValue.AB_AppPath))
+        //    Directory.CreateDirectory(ConstValue.AB_AppPath);
+
+        // 初始化各种管理器
+        //GameObject configManager = new GameObject("ConfigManager");
+        //configManager.transform.SetParent(this.transform);
+        //configManager.AddComponent<ConfigManager>();
+
         GameObject poolManager = new GameObject("PoolManager");
         poolManager.transform.SetParent(this.transform);
         poolManager.AddComponent<PoolManager>();
@@ -41,14 +89,41 @@ public class GameManager : MonoBehaviour
         ui_check = obj.GetComponent<UI_CheckUpdate>();
     }
 
-    void Start()
+    // 请求游戏配置
+    async void GetConfig()
     {
-        //TODO:
-        // 此处应校验资源版本
-        // 校验完成后，Hotfix初始化
-        // 出UI逻辑交给Hotfix
-        //UIManager.Get().Push<UI_Login>();
+        string text = await HttpHelper.TryGetAsync(ConstValue.PRESENT_GET);
+        if (string.IsNullOrEmpty(text))
+        {
+            Debug.LogError($"配置请求失败: {ConstValue.PRESENT_GET}");
+            return;
+        }
+        Debug.Log($"success: {text}");
+        var obj = JsonConvert.DeserializeObject<ServerResponse>(text);
+        present = JsonConvert.DeserializeObject<Present>(obj.data);
 
-        //Resources.Load("UI_CheckUpdate");
+
+#if UNITY_EDITOR && !USE_ASSETBUNDLE
+        // 不检查更新
+        OnInited();
+#else
+        // 加载配置（需要启动资源服务器）
+        StartCoroutine(ui_check.StartCheck(OnInited));
+#endif
+    }
+
+    void OnInited()
+    {
+        Initialized = true;
+
+        // 进入HotFix代码
+        //ConfigManager.Get().Load(); //AB加载完毕，加载配置
+        ui_check.gameObject.SetActive(false);
+
+        // 加载第一个UI
+        //UIManager.Get().Push<UI_Login>();
+        //TODO:
+        // 此处应移交给Hotfix，执行UI逻辑
+        //UIManager.Get().Push<UI_Login>();
     }
 }
