@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
@@ -23,7 +21,7 @@ public class GameManager : MonoBehaviour
 
             SystemSetting();
             BindAssets();
-            //GetConfig();
+            GetConfig();
         }
         else
         {
@@ -40,6 +38,10 @@ public class GameManager : MonoBehaviour
     // 系统设置
     void SystemSetting()
     {
+        // 初始化目录
+        if (!Directory.Exists(ConstValue.AB_AppPath))
+            Directory.CreateDirectory(ConstValue.AB_AppPath);
+
         Time.timeScale = 1.0f;
         //Time.fixedDeltaTime = 1f / Constants.FPS;
         //Application.targetFrameRate = Constants.FPS; //锁定渲染帧60，不锁是-1
@@ -53,10 +55,6 @@ public class GameManager : MonoBehaviour
     // 绑定组件
     void BindAssets()
     {
-        // 初始化目录
-        //if (!Directory.Exists(ConstValue.AB_AppPath))
-        //    Directory.CreateDirectory(ConstValue.AB_AppPath);
-
         // 初始化各种管理器
         //GameObject configManager = new GameObject("ConfigManager");
         //configManager.transform.SetParent(this.transform);
@@ -118,12 +116,13 @@ public class GameManager : MonoBehaviour
 
         // 进入HotFix代码
         //ConfigManager.Get().Load(); //AB加载完毕，加载配置
-        ui_check.gameObject.SetActive(false);
 
         // 加载第一个UI
         //UIManager.Get().Push<UI_Login>();
         //TODO:
         // 此处应移交给Hotfix，执行UI逻辑
         //UIManager.Get().Push<UI_Login>();
+
+        ui_check.gameObject.SetActive(false);
     }
 }
